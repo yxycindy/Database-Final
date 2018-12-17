@@ -10,3 +10,8 @@ https://www.sqlite.org/cvstrac/wiki?p=ConverterTools
 # useful websites
 https://www.kaggle.com/durand1/plotting-progression-times-per-grade/notebook
 https://www.kaggle.com/dcohen21/8anu-climbing-logbook
+
+# DB update 
+1. delete method 4/5
+2. update grade table filled in the blanks for USA-route 
+3. add gender table 
