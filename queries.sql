@@ -79,21 +79,20 @@ END;
 //
 delimiter;
 
---5. Given user ID list all the climbs they did in their home country, include city,
--- country, grade of the route, route name, route country.
+--5. Given a country code list top 5 most popular crags,
 delimiter //
-DROP PROCEDURE IF EXISTS ListClimb_HomeCountry //
-CREATE PROCEDURE ListClimb_HomeCountry(IN ID VARCHAR(4))
+DROP PROCEDURE IF EXISTS Popular //
+CREATE PROCEDURE Popular(IN countryID VARCHAR(4))
 BEGIN
-IF EXISTS(SELECT id FROM user WHERE id=ID) THEN
-  SELECT user.country, user.city, grade.usa_routes, ascent.country, ascent.name
+IF EXISTS(SELECT country FROM ascent WHERE country=countryID) THEN
+  SELECT ascent.crag, COUNT(ascent.id) as num
   FROM ascent
-  INNER JOIN grade ON ascent.grade_id = grade.id
-  INNER JOIN user ON ascent.user_id = user.id
-  WHERE user.id=ID AND ascent.climb_type = 0 AND user.country = ascent.country
-  ORDER BY ascent.date;
+  WHERE ascent.country = countryID
+  GROUP BY ascent.crag
+  ORDER BY num DESC
+  LIMIT 5;
 ELSE
-  SELECT 'ERROR: ', 'Incorrect ID' as 'Result';
+  SELECT 'ERROR: ', 'Incorrect country code' as 'Result';
 END IF;
 END;
 //
@@ -105,7 +104,7 @@ delimiter;
 --sort in descending order.
 delimiter //
 DROP PROCEDURE IF EXISTS ListClimb_GradeNum //
-CREATE PROCEDURE ListClimb_GradeNum(IN low INTEGER, In high INTEGER)
+CREATE PROCEDURE ListClimb_GradeNum(IN low VARCHAR(4), In high VARCHAR(4))
 BEGIN
 IF EXISTS(SELECT id FROM grade WHERE id=low) THEN
   SELECT ascent.country, COUNT(DISTINCT ascent.id) as numOfClimb
@@ -228,7 +227,7 @@ delimiter;
 --sort in descending order.
 delimiter //
 DROP PROCEDURE IF EXISTS ListClimb_Grade //
-CREATE PROCEDURE ListClimb_Grade(IN low INTEGER, In high INTEGER)
+CREATE PROCEDURE ListClimb_Grade(IN low VARCHAR(4), In high VARCHAR(4))
 BEGIN
 IF EXISTS(SELECT id FROM grade WHERE id=low) THEN
   SELECT x.country, x.numOfmen, y.numOfgirl
@@ -285,8 +284,8 @@ IF EXISTS(SELECT id FROM user WHERE id=ID) THEN
   SELECT method.name, count(ascent.id)
   FROM ascent
   INNER JOIN method ON ascent.method_id = method.id
-  WHERE user_id.id=ID AND ascent.climb_type = 1
-  GROUP BY method.method_id;
+  WHERE ascent.user_id=ID AND ascent.climb_type = 1
+  GROUP BY method.id;
 ELSE
   SELECT 'ERROR: ', 'Incorrect ID' as 'Result';
 END IF;
@@ -304,7 +303,7 @@ CREATE PROCEDURE Top_Climb()
 BEGIN
   SELECT DISTINCT user.id, gender.name, user.country, COUNT(ascent.id) as num
   FROM user
-  INNER JOIN gender ON user.sex = gender.sex_id
+  INNER JOIN gender ON user.sex = gender.gID
   INNER JOIN ascent ON user.id = ascent.user_id
   INNER JOIN grade ON ascent.grade_id = grade.id
   WHERE grade.id > 76 AND ascent.climb_type = 0
@@ -320,15 +319,15 @@ delimiter;
 --in the world (boulders that’s harder than V12),
 --include their gender, country, and number of climbs.
 delimiter //
-DROP PROCEDURE IF EXISTS Top_Climb//
-CREATE PROCEDURE Top_Climb()
+DROP PROCEDURE IF EXISTS Top_Boud//
+CREATE PROCEDURE Top_Boud()
 BEGIN
   SELECT DISTINCT user.id, gender.name, user.country, COUNT(ascent.id) as num
   FROM user
-  INNER JOIN gender ON user.sex = gender.sex_id
+  INNER JOIN gender ON user.sex = gender.gID
   INNER JOIN ascent ON user.id = ascent.user_id
   INNER JOIN grade ON ascent.grade_id = grade.id
-  WHERE grade.id > 63 AND ascent.climb_type = 1
+  WHERE grade.id > 70 AND ascent.climb_type = 1
   GROUP BY user.id
   ORDER BY num DESC
   LIMIT 10;

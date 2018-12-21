@@ -122,23 +122,18 @@ body {
   <li><a class="lua" href="./main.html">Search by ID</a></li>
   <li><a class="lua" href="./Country.html">Search by Country</a></li>
   <li><a class="lua" href="./Grade.html">Search by Grade range</a></li>
+  <li><a class="lua" href="./year.html">Best climber by year</a></li>
   <li><a class="lua" href="#about">About</a></li>
 </ul>
 <div>
 
 <div class="form">
-  <form action="/action_page.php" class="ali">
+  <form action="gradeLookUp.php" class="ali" method="post">
   <h1>Pick the the climbing grade you are interested:</h1>
   <br>
-  <select style="font-size:25px;" class="selec" id="country" name="country">
-  <option value="au">5.9</option>
-  <option value="ca">5.10a-5.10d</option>
-  <option value="usa">5.10a-5.10d</option>
-  <option value="usa">5.11a-5.11d</option>
-  <option value="usa">5.12a-5.12d</option>
-  <option value="usa">5.13a-5.13d</option>
-  <option value="usa">5.14a-5.14d</option>
-  <option value="usa">5.15a-5.15d</option>
+  <select style="font-size:25px;" class="selec" name="grade">
+  <option value="68">5.14a-5.14d</option>
+  <option value="76">5.15a-5.15d</option>
   </select>
   <br><br><br>
   <input class="buttons" style="font-size:10px;" type="submit" value="Submit">
@@ -148,10 +143,10 @@ body {
 <div class="topList">
   <h1> Top-list of the Year <h1>
     <ul class="lubb">
-      <li><a class="lub" href="#news">TOP 10 cracks with the hardest climb</a></li>
-      <li><a class="lub" href="#news">TOP 10 countries with best female climbers</a></li>
-      <li><a class="lub" href="#contact">TOP 10 climberID(sports climb)</a></li>
-      <li><a class="lub" href="#about">TOP 10 climberID(boulder)</a></li>
+      <li><a class="lub" href="./crag.php">TOP 10 cracks with the hardest climb</a></li>
+      <li><a class="lub" href="./top_c.php">TOP 10 countries with best female climbers</a></li>
+      <li><a class="lub" href="./top_spr.php">TOP 10 climberID(sports climb)</a></li>
+      <li><a class="lub" href="./top_b.php">TOP 10 climberID(boulder)</a></li>
     </ul>
 </div>
 
