@@ -13,7 +13,7 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
 
-echo "<h1>Top 10 climbers</h1>";
+echo "<h1>Top 10 countries with most elite female climbers</h1>";
 
 if ($mysqli->multi_query("CALL Topfemale();")) {
                if ($result = $mysqli->store_result()) {
