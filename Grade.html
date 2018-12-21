@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body {
+  font-family: Arial;
+  background: #BFBDBD;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: #2D2D2D;
+  color: #F0EDEE;
+  border-radius: 4px;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+.nav {
+  padding-left: 0px;
+  margin-top: 8px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+}
+
+.form {
+  padding-left: 10px;
+  position: fixed;
+  margin-left: 19%;
+  height: 65%;
+  width: 54%;
+  background-color: #F0EDEE;
+  padding-top: 20px;
+  border-radius: 4px;
+}
+
+.topList {
+  position: fixed;
+  margin-left: 75%;
+  height: 67%;
+  width: 23%;
+  padding-left: 14px;
+  background-color: #F0EDEE;
+  border-radius: 4px;
+}
+
+.lu {
+  list-style-type: none;
+  margin: 0;
+  padding-top: 10px;
+  width: 15%;
+  background-color: #243E56;
+  position: fixed;
+  height: 65%;
+  overflow: auto;
+}
+
+.lua {
+  display: block;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.lubb {
+  color: #F0EDEE;
+}
+
+.lub {
+  display: block;
+  font-size: 20px;
+  padding: 8px 0px;
+  text-decoration: none;
+}
+
+.lua:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.buttons {
+  background-color: #243E56;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.ali {
+  padding-left: 30px;
+}
+
+.selec {
+  width: 60%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #243E56;
+  border: 2px solid #243E56;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>The Climbing-being</h1>
+  <p>Database to get all the ascents information around the globe.</p>
+</div>
+
+<div class="nav">
+<ul class="lu">
+  <li><a class="lua" href="./main.html">Search by ID</a></li>
+  <li><a class="lua" href="./Country.html">Search by Country</a></li>
+  <li><a class="lua" href="./Grade.html">Search by Grade range</a></li>
+  <li><a class="lua" href="#about">About</a></li>
+</ul>
+<div>
+
+<div class="form">
+  <form action="/action_page.php" class="ali">
+  <h1>Pick the the climbing grade you are interested:</h1>
+  <br>
+  <select style="font-size:25px;" class="selec" id="country" name="country">
+  <option value="au">5.9</option>
+  <option value="ca">5.10a-5.10d</option>
+  <option value="usa">5.10a-5.10d</option>
+  <option value="usa">5.11a-5.11d</option>
+  <option value="usa">5.12a-5.12d</option>
+  <option value="usa">5.13a-5.13d</option>
+  <option value="usa">5.14a-5.14d</option>
+  <option value="usa">5.15a-5.15d</option>
+  </select>
+  <br><br><br>
+  <input class="buttons" style="font-size:10px;" type="submit" value="Submit">
+</form>
+</div>
+
+<div class="topList">
+  <h1> Top-list of the Year <h1>
+    <ul class="lubb">
+      <li><a class="lub" href="#news">TOP 10 cracks with the hardest climb</a></li>
+      <li><a class="lub" href="#news">TOP 10 countries with best female climbers</a></li>
+      <li><a class="lub" href="#contact">TOP 10 climberID(sports climb)</a></li>
+      <li><a class="lub" href="#about">TOP 10 climberID(boulder)</a></li>
+    </ul>
+</div>
+
+</body>
+</html>
